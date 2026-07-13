@@ -2,8 +2,17 @@
   "version": 4,
   "userId": "Ztoo",
   "userName": "",
-  "updatedAt": "2026-07-13T09:35:11.475Z",
+  "updatedAt": "2026-07-13T09:35:23.045Z",
   "todos": [
+    {
+      "id": "mrj1129yqboyl7",
+      "text": "赚大钱",
+      "completed": false,
+      "createdAt": "2026-07-13",
+      "dueDate": "2026-07-14",
+      "category": "study",
+      "priority": "medium"
+    },
     {
       "id": "mrj10ubwmr57jo",
       "text": "赚钱",
