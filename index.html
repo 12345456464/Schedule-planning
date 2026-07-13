@@ -1013,6 +1013,264 @@
             border: 0;
         }
 
+        /* ── Welcome / Onboarding Modal ────────── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .modal {
+            background: var(--surface);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            padding: 32px 28px;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            animation: scaleIn 0.3s ease;
+            border: 1px solid var(--border);
+        }
+
+        @keyframes scaleIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+
+        .modal-icon { font-size: 3rem; margin-bottom: 12px; }
+
+        .modal h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            letter-spacing: -0.3px;
+        }
+
+        .modal .modal-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .modal .modal-desc .highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .modal input[type="text"] {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            color: var(--text);
+            background: var(--bg-secondary);
+            outline: none;
+            font-family: inherit;
+            text-align: center;
+            margin-bottom: 16px;
+            transition: all var(--transition);
+        }
+
+        .modal input[type="text"]:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+
+        .modal .btn-primary {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition);
+            font-family: inherit;
+        }
+
+        .modal .btn-primary:hover { background: var(--primary-hover); transform: translateY(-1px); }
+        .modal .btn-primary:active { transform: scale(0.97); }
+
+        .modal .btn-ghost {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            cursor: pointer;
+            margin-top: 10px;
+            font-family: inherit;
+            transition: color var(--transition);
+        }
+
+        .modal .btn-ghost:hover { color: var(--text-secondary); }
+
+        /* Privacy badges */
+        .privacy-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.68rem;
+            font-weight: 600;
+            background: var(--success-light);
+            color: var(--success);
+            white-space: nowrap;
+        }
+
+        .privacy-dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--success);
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        /* Profile section in sidebar */
+        .sidebar-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all var(--transition);
+            border: 1px solid var(--border-light);
+        }
+
+        .sidebar-profile:hover {
+            background: var(--surface-hover);
+            border-color: var(--border);
+        }
+
+        .sidebar-profile .avatar {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .sidebar-profile .profile-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .sidebar-profile .profile-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .sidebar-profile .profile-sub {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Settings dropdown */
+        .settings-wrap {
+            position: relative;
+        }
+
+        .settings-menu {
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            margin-bottom: 8px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-lg);
+            padding: 4px;
+            min-width: 180px;
+            display: none;
+            z-index: 500;
+            animation: scaleIn 0.15s ease;
+        }
+
+        .settings-menu.show { display: block; }
+
+        .settings-menu button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            text-align: left;
+            padding: 10px 14px;
+            border: none;
+            background: none;
+            border-radius: var(--radius-xs);
+            font-size: 0.82rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: all var(--transition);
+            font-family: inherit;
+        }
+
+        .settings-menu button:hover {
+            background: var(--surface-hover);
+            color: var(--text);
+        }
+
+        .settings-menu button.danger:hover {
+            background: var(--danger-light);
+            color: var(--danger);
+        }
+
+        .settings-menu .menu-divider {
+            height: 1px;
+            background: var(--border);
+            margin: 4px 0;
+        }
+
+        .settings-menu .menu-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            padding: 6px 14px 2px;
+            font-weight: 600;
+        }
+
+        /* Mobile settings */
+        .mobile-settings {
+            position: relative;
+        }
+
+        .mobile-settings .settings-menu {
+            bottom: auto;
+            top: 100%;
+            right: -10px;
+            margin-top: 8px;
+            margin-bottom: 0;
+        }
+
         /* Reduced motion */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
@@ -1024,6 +1282,23 @@
     </style>
 </head>
 <body>
+    <!-- Welcome / Onboarding Modal -->
+    <div class="modal-overlay" id="welcomeModal">
+        <div class="modal">
+            <div class="modal-icon">👋</div>
+            <h2>欢迎使用 Schedule Planning</h2>
+            <p class="modal-desc">
+                你的待办事项将<span class="highlight">仅存储在此浏览器中</span>，<br>
+                其他人无法看到你的计划。
+            </p>
+            <input type="text" id="welcomeNameInput" placeholder="输入你的名字（可选）" autocomplete="off" maxlength="20" />
+            <br>
+            <button class="btn-primary" id="btnWelcomeStart">开始使用 →</button>
+            <br>
+            <button class="btn-ghost" id="btnWelcomeSkip">跳过，直接开始</button>
+        </div>
+    </div>
+
     <div class="app">
         <!-- ═══════════════════════════════════════════════
              Sidebar — Desktop only
@@ -1070,11 +1345,35 @@
                 </div>
             </div>
 
-            <!-- Theme toggle -->
-            <div style="margin-top: auto;">
+            <!-- User profile -->
+            <div>
+                <div class="sidebar-section-title">用户</div>
+                <div class="sidebar-profile" id="sidebarProfile" title="点击编辑名字">
+                    <div class="avatar" id="avatarLetter">?</div>
+                    <div class="profile-info">
+                        <div class="profile-name" id="profileName">未设置</div>
+                        <div class="profile-sub">
+                            <span class="privacy-dot"></span> 仅本机可见
+                        </div>
+                    </div>
+                    <span style="color:var(--text-muted);font-size:0.7rem;">✎</span>
+                </div>
+            </div>
+
+            <!-- Theme toggle + settings -->
+            <div style="margin-top: auto; display:flex; flex-direction:column; gap:8px;">
                 <button class="pill-btn" id="btnTheme" style="width:100%; justify-content:center; display:flex; gap:6px; align-items:center;">
                     🌙 <span id="themeLabel">暗色模式</span>
                 </button>
+                <div style="display:flex; gap:6px;">
+                    <button class="pill-btn" id="btnExportSidebar" style="flex:1; text-align:center; justify-content:center; display:flex; gap:4px; align-items:center;">
+                        📤 导出
+                    </button>
+                    <button class="pill-btn" id="btnImportSidebar" style="flex:1; text-align:center; justify-content:center; display:flex; gap:4px; align-items:center;">
+                        📥 导入
+                    </button>
+                </div>
+                <input type="file" id="importFileInput" accept=".json" style="display:none;" />
             </div>
         </aside>
 
@@ -1084,9 +1383,27 @@
         <main class="main">
             <!-- Top bar — Mobile -->
             <div class="topbar">
-                <h1>📝 待办事项</h1>
+                <div>
+                    <h1 id="mobileGreeting">📝 我的计划</h1>
+                    <span class="privacy-badge" style="margin-top:2px;">
+                        <span class="privacy-dot"></span> 仅本机可见
+                    </span>
+                </div>
                 <div class="topbar-actions">
-                    <button class="btn-icon" id="btnThemeMobile" title="切换主题" aria-label="切换主题">🌙</button>
+                    <div class="mobile-settings">
+                        <button class="btn-icon" id="btnSettingsMobile" title="设置" aria-label="设置">⚙️</button>
+                        <div class="settings-menu" id="settingsMenuMobile">
+                            <div class="menu-label">数据</div>
+                            <button id="btnExportMobile">📤 导出备份</button>
+                            <button id="btnImportMobile">📥 导入数据</button>
+                            <div class="menu-divider"></div>
+                            <div class="menu-label">偏好</div>
+                            <button id="btnThemeMenuMobile">🌙 切换主题</button>
+                            <button id="btnEditNameMobile">✎ 修改名字</button>
+                            <div class="menu-divider"></div>
+                            <button class="danger" id="btnResetMobile">🗑 清空全部数据</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1229,7 +1546,9 @@
         let saveTimer   = null;
 
         const STORAGE_KEY  = 'todo_app_v3';
+        const USER_KEY     = 'todo_user_name';
         const THEME_KEY    = 'todo_theme';
+        const VISITED_KEY  = 'todo_visited';
         const CATEGORIES   = ['work', 'personal', 'study', 'shopping', 'other'];
         const CAT_LABELS   = { work: '工作', personal: '个人', study: '学习', shopping: '购物', other: '其他' };
         const CAT_ICONS    = { work: '💼', personal: '👤', study: '📚', shopping: '🛒', other: '📌' };
@@ -1313,6 +1632,195 @@
         }
 
         window.addEventListener('beforeunload', saveTodosNow);
+
+        // ═══════════════════════════════════════════
+        // User name / profile
+        // ═══════════════════════════════════════════
+        function getUserName() {
+            return localStorage.getItem(USER_KEY) || '';
+        }
+
+        function setUserName(name) {
+            const trimmed = name.trim().slice(0, 20);
+            localStorage.setItem(USER_KEY, trimmed);
+            updateProfileUI(trimmed);
+            return trimmed;
+        }
+
+        function getInitial(name) {
+            if (!name) return '?';
+            // Return first Chinese character or first ASCII letter
+            const ch = name.charAt(0);
+            if (/[一-龥]/.test(ch)) return ch;
+            return ch.toUpperCase();
+        }
+
+        function updateProfileUI(name) {
+            const displayName = name || '未设置';
+            const initial = getInitial(name);
+
+            // Sidebar
+            const $avatar = document.getElementById('avatarLetter');
+            const $pName = document.getElementById('profileName');
+            if ($avatar) $avatar.textContent = initial;
+            if ($pName) $pName.textContent = displayName;
+
+            // Mobile greeting
+            const $greeting = document.getElementById('mobileGreeting');
+            if ($greeting) {
+                if (name) {
+                    $greeting.textContent = '📝 ' + name + ' 的计划';
+                } else {
+                    $greeting.textContent = '📝 我的计划';
+                }
+            }
+        }
+
+        function promptEditName() {
+            const current = getUserName();
+            const newName = prompt('输入你的名字（留空则不显示）：', current);
+            if (newName !== null) {
+                const saved = setUserName(newName);
+                showToast(saved ? '名字已更新：' + saved : '名字已清除');
+                updateAllGreetings();
+            }
+        }
+
+        function updateAllGreetings() {
+            updateProfileUI(getUserName());
+        }
+
+        // ═══════════════════════════════════════════
+        // Welcome / First visit
+        // ═══════════════════════════════════════════
+        function showWelcome() {
+            const $modal = document.getElementById('welcomeModal');
+            if ($modal) $modal.style.display = 'flex';
+            document.getElementById('welcomeNameInput').focus();
+        }
+
+        function hideWelcome() {
+            const $modal = document.getElementById('welcomeModal');
+            if ($modal) {
+                $modal.style.opacity = '0';
+                $modal.style.transition = 'opacity 0.2s ease';
+                setTimeout(() => $modal.remove(), 200);
+            }
+        }
+
+        function finishWelcome(name) {
+            if (name) setUserName(name);
+            localStorage.setItem(VISITED_KEY, '1');
+            hideWelcome();
+            updateAllGreetings();
+            $input.focus();
+        }
+
+        // ═══════════════════════════════════════════
+        // Export / Import
+        // ═══════════════════════════════════════════
+        function exportData() {
+            const data = {
+                version: 3,
+                exportedAt: new Date().toISOString(),
+                userName: getUserName(),
+                todos: todos
+            };
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            const dateStr = todayStr().replace(/-/g, '');
+            a.download = 'schedule-planning-backup-' + dateStr + '.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast('📤 数据已导出（' + todos.length + ' 项任务）');
+        }
+
+        function importData(file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    if (!data.todos || !Array.isArray(data.todos)) {
+                        throw new Error('无效的数据格式');
+                    }
+                    const count = data.todos.length;
+                    const action = todos.length > 0
+                        ? confirm('当前有 ' + todos.length + ' 项任务。\n\n选择"确定"：导入数据将替换当前数据\n选择"取消"：导入数据将与当前数据合并\n\n导入文件包含 ' + count + ' 项任务。')
+                        : true;
+
+                    if (todos.length > 0) {
+                        if (action) {
+                            // Replace
+                            todos = data.todos;
+                        } else {
+                            // Merge — avoid duplicate IDs
+                            const existingIds = new Set(todos.map(t => t.id));
+                            const newItems = data.todos.filter(t => !existingIds.has(t.id));
+                            todos = [...newItems, ...todos];
+                        }
+                    } else {
+                        todos = data.todos;
+                    }
+
+                    // Optionally restore user name
+                    if (data.userName && !getUserName()) {
+                        setUserName(data.userName);
+                        updateAllGreetings();
+                    }
+
+                    saveTodos();
+                    render();
+                    showToast('📥 成功导入 ' + count + ' 项任务');
+                } catch (err) {
+                    showToast('❌ 导入失败：文件格式不正确');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function triggerImport() {
+            const $file = document.getElementById('importFileInput');
+            if ($file) $file.click();
+        }
+
+        function resetAllData() {
+            if (!confirm('⚠️ 确定要清空所有数据吗？\n\n这将删除所有任务和设置。此操作不可恢复！')) return;
+            if (!confirm('再次确认：真的要删除所有 ' + todos.length + ' 项任务吗？')) return;
+            todos = [];
+            localStorage.removeItem(STORAGE_KEY);
+            localStorage.removeItem(USER_KEY);
+            localStorage.removeItem(VISITED_KEY);
+            saveTodos();
+            updateProfileUI('');
+            updateAllGreetings();
+            render();
+            showToast('🗑 所有数据已清空');
+        }
+
+        // ═══════════════════════════════════════════
+        // Settings menu toggle
+        // ═══════════════════════════════════════════
+        function toggleSettingsMenu(menuId) {
+            const menu = document.getElementById(menuId);
+            if (!menu) return;
+            const isOpen = menu.classList.contains('show');
+            // Close all menus first
+            document.querySelectorAll('.settings-menu').forEach(m => m.classList.remove('show'));
+            if (!isOpen) {
+                menu.classList.add('show');
+            }
+        }
+
+        // Close menus when clicking outside
+        document.addEventListener('click', e => {
+            if (!e.target.closest('.settings-menu') && !e.target.closest('.btn-icon')) {
+                document.querySelectorAll('.settings-menu').forEach(m => m.classList.remove('show'));
+            }
+        });
 
         // ═══════════════════════════════════════════
         // Toast
@@ -1993,9 +2501,94 @@
             updateCategoryPills();
             updatePriorityPills();
             clearPendingDue();
+            updateAllGreetings();
             render();
-            $input.focus();
+            updateHint();
+
+            // Welcome screen for first-time visitors
+            const hasVisited = localStorage.getItem(VISITED_KEY);
+            if (!hasVisited) {
+                showWelcome();
+            } else {
+                $input.focus();
+            }
         }
+
+        // ═══════════════════════════════════════════
+        // New UI event bindings
+        // ═══════════════════════════════════════════
+
+        // Welcome modal
+        const $welcomeModal = document.getElementById('welcomeModal');
+        const $welcomeInput = document.getElementById('welcomeNameInput');
+        const $btnStart = document.getElementById('btnWelcomeStart');
+        const $btnSkip = document.getElementById('btnWelcomeSkip');
+
+        if ($btnStart) {
+            $btnStart.addEventListener('click', () => {
+                finishWelcome($welcomeInput ? $welcomeInput.value.trim() : '');
+            });
+        }
+        if ($btnSkip) {
+            $btnSkip.addEventListener('click', () => finishWelcome(''));
+        }
+        if ($welcomeInput) {
+            $welcomeInput.addEventListener('keydown', e => {
+                if (e.key === 'Enter') finishWelcome($welcomeInput.value.trim());
+            });
+        }
+
+        // Sidebar profile — click to edit name
+        const $sidebarProfile = document.getElementById('sidebarProfile');
+        if ($sidebarProfile) {
+            $sidebarProfile.addEventListener('click', promptEditName);
+        }
+
+        // Export (sidebar)
+        const $btnExportSide = document.getElementById('btnExportSidebar');
+        if ($btnExportSide) $btnExportSide.addEventListener('click', exportData);
+
+        // Import (sidebar)
+        const $btnImportSide = document.getElementById('btnImportSidebar');
+        if ($btnImportSide) $btnImportSide.addEventListener('click', triggerImport);
+
+        // Import file input
+        const $importFile = document.getElementById('importFileInput');
+        if ($importFile) {
+            $importFile.addEventListener('change', e => {
+                if (e.target.files && e.target.files[0]) {
+                    importData(e.target.files[0]);
+                    e.target.value = '';
+                }
+            });
+        }
+
+        // Settings menu (mobile)
+        const $btnSettingsM = document.getElementById('btnSettingsMobile');
+        if ($btnSettingsM) {
+            $btnSettingsM.addEventListener('click', e => {
+                e.stopPropagation();
+                toggleSettingsMenu('settingsMenuMobile');
+            });
+        }
+
+        // Mobile settings menu items
+        const bindMenuBtn = (id, handler) => {
+            const btn = document.getElementById(id);
+            if (btn) {
+                btn.addEventListener('click', e => {
+                    e.stopPropagation();
+                    handler();
+                    document.querySelectorAll('.settings-menu').forEach(m => m.classList.remove('show'));
+                });
+            }
+        };
+
+        bindMenuBtn('btnExportMobile', exportData);
+        bindMenuBtn('btnImportMobile', triggerImport);
+        bindMenuBtn('btnThemeMenuMobile', toggleTheme);
+        bindMenuBtn('btnEditNameMobile', promptEditName);
+        bindMenuBtn('btnResetMobile', resetAllData);
 
         init();
     })();
