@@ -562,7 +562,7 @@
             <div class="input-group">
                 <label>你的 ID</label>
                 <input type="text" id="loginIdInput" placeholder="例如：myplan2024" autocomplete="off" maxlength="30" />
-                <span class="hint">4-30 个字符，支持字母、数字、下划线</span>
+                <span class="hint">4-30 个字符，支持中文、字母、数字、下划线</span>
             </div>
             <div class="input-group" id="nameGroup" style="display:none;">
                 <label>你的名字（可选）</label>
@@ -1490,7 +1490,7 @@
         // ═══════════════════════════════════════════
         function validateId(id) {
             if (!id || id.length < 2 || id.length > 30) return 'ID 长度需要 2-30 个字符';
-            if (!/^[a-zA-Z0-9_]+$/.test(id)) return 'ID 只能包含字母、数字和下划线';
+            if (!/^[a-zA-Z0-9_一-鿿㐀-䶿]+$/.test(id)) return 'ID 只能包含中文、字母、数字和下划线';
             return null;
         }
 
